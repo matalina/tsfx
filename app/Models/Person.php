@@ -13,16 +13,16 @@ class Person extends Model
         'is_self',
         'always_on_person',
         'location',
-    
+
     ];
-    
-    
+
+
     protected $dates = [
         'created_at',
         'updated_at',
-    
+
     ];
-    
+
     protected $appends = ['resource_url'];
 
     /* ************************ ACCESSOR ************************* */
@@ -31,15 +31,15 @@ class Person extends Model
     {
         return url('/admin/people/'.$this->getKey());
     }
-    
+
     /* ********************** RELATIONSHIPS *********************** */
-    
+
     public function items()
     {
-        return $this->morphOne(Item::class,'storable')
+        return $this->morphOne(Item::class,'storable');
     }
-    
-    public function room() 
+
+    public function room()
     {
         return $this->hasOne(Room::class,'id','location');
     }

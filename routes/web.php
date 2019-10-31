@@ -11,10 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function() {
+    return view('home');
 });
-
 
 /* Auto-generated admin routes */
 Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
@@ -84,10 +83,3 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
     Route::delete('/admin/doors/{door}',                        'Admin\DoorsController@destroy')->name('admin/doors/destroy');
 });
 
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-
-Route::get('/chapter/{save}','ChapterController@show')->name('chapter');

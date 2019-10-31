@@ -13,6 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::post('auth/login', 'Api\AuthController@login')->name('login');
+Route::post('auth/register', 'Api\AuthController@register')->name('register');
+
 Route::middleware('auth:api')->group(function() {
     Route::apiResource('rooms', 'Api\RoomController');
     Route::apiResource('items', 'Api\ItemController');

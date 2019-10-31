@@ -19,14 +19,43 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+import VueRouter from 'vue-router';
+import BootstrapVue from 'bootstrap-vue';
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+import routes from './routes';
+import Event from './event';
+import store from './store';
 
-const app = new Vue({
+import App from './views/App';
+
+const router = new VueRouter({
+    routes
+});
+
+router.beforeEach((to, from, next) => {
+    console.log(to.path);
+    if(to.path === '/') {
+        if (store.state.user !== undefined && store.state.user !== null && store.state.user !== {}) {
+            return next('/dashboard');
+        }
+    }
+    else {
+        if (store.state.user === undefined || store.state.user === null || store.state.user === {}) {
+            return next('/');
+        }
+
+        next();
+    }
+});
+
+Vue.use(VueRouter);
+Vue.use(BootstrapVue);
+window.EventBus = Event;
+
+let app = new Vue({
     el: '#app',
+    components: { App },
+    template: '<App/>',
+    store,
+    router,
 });

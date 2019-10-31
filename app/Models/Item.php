@@ -12,16 +12,16 @@ class Item extends Model
         'description',
         'storable_id',
         'storable_type',
-    
+
     ];
-    
-    
+
+
     protected $dates = [
         'created_at',
         'updated_at',
-    
+
     ];
-    
+
     protected $appends = ['resource_url'];
 
     /* ************************ ACCESSOR ************************* */
@@ -30,14 +30,14 @@ class Item extends Model
     {
         return url('/admin/items/'.$this->getKey());
     }
-    
+
     /* ********************** RELATIONSHIPS *********************** */
-    
+
     public function items()
     {
-        return $this->morphOne(Item::class,'storable')
+        return $this->morphOne(Item::class,'storable');
     }
-    
+
     public function storable()
     {
         return $this->morphTo(Item::class);

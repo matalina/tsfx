@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use \Hash;
 
 class User extends Authenticatable
 {
@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','api_token',
     ];
 
     /**
@@ -36,9 +36,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
+
+    /* ************************ ACCESSOR ************************* */
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = Hash::make($value);
+    }
+
+    public function setApiTokenAttribute($value)
+    {
+        $this->attributes['api_token'] = \Str::random(80);
+    }
+
     /* ********************** RELATIONSHIPS *********************** */
-    
+
     public function saves()
     {
         return $this->hasMany(Save::class,'user_id','id');

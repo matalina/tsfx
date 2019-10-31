@@ -99,9 +99,9 @@ class FillDefaultAdminUserAndPermissions extends Migration
         //Add new users
         $this->users = [
             [
-                'first_name' => 'Administrator',
-                'last_name' => 'Administrator',
-                'email' => 'administrator@brackets.sk',
+                'first_name' => 'AJ',
+                'last_name' => 'Hunter',
+                'email' => 'ajs.voices@gmail.com',
                 'password' => Hash::make($this->password),
                 'remember_token' => null,
                 'created_at' => Carbon::now(),
