@@ -21,6 +21,11 @@ window.Vue = require('vue');
 
 import VueRouter from 'vue-router';
 import BootstrapVue from 'bootstrap-vue';
+import Vuex from 'vuex';
+
+Vue.use(VueRouter);
+Vue.use(BootstrapVue);
+Vue.use(Vuex);
 
 import routes from './routes';
 import Event from './event';
@@ -32,24 +37,27 @@ const router = new VueRouter({
     routes
 });
 
+function isLoggedIn() {
+    return store.state.user.api_token !== undefined;
+}
+
 router.beforeEach((to, from, next) => {
-    console.log(to.path);
-    if(to.path === '/') {
-        if (store.state.user !== undefined && store.state.user !== null && store.state.user !== {}) {
-            return next('/dashboard');
+    if(! isLoggedIn()) {
+        if(to.path === '/') {
+            next();
         }
+
+        next('/');
     }
     else {
-        if (store.state.user === undefined || store.state.user === null || store.state.user === {}) {
-            return next('/');
+        if(to.path === '/') {
+            next('/dashboard');
         }
 
         next();
     }
 });
 
-Vue.use(VueRouter);
-Vue.use(BootstrapVue);
 window.EventBus = Event;
 
 let app = new Vue({

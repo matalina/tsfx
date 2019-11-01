@@ -8,11 +8,12 @@ export default {
         state.history.push(data);
     },
     clear(state) {
-        let reset = initial();
+        Object.assign(state, initial());
+        /*let reset = initial();
 
         Object.keys(reset).forEach(key => {
             state[key] = reset[key]
-        })
+        })*/
     },
 
     load(state, {type, number, data}) {

@@ -47,6 +47,7 @@
     import errors from '../errors';
 
     export default {
+        name: 'Login',
         data() {
             return {
                 email: null,

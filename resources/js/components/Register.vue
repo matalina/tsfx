@@ -61,7 +61,7 @@
         <div class="text-center">
             <button
                 class="btn btn-dark"
-            >Login</button>
+            >Register</button>
         </div>
     </form>
 </template>
@@ -71,6 +71,7 @@
     import errors from '../errors';
 
     export default {
+        name: 'Register',
         data() {
             return {
                 name: null,
@@ -94,7 +95,10 @@
                 api.send('post','/auth/register',data)
                     .then((response) => {
                         this.$store.dispatch('login',response.data.data);
-                        this.$router.push('/dashboard');
+                        EventBus.fire('set-alert', {
+                            type: 'success',
+                            message: 'Profile updated!',
+                        })
                     })
                     .catch((error) => {
                         this.error_handler(error);

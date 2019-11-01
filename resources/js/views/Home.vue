@@ -1,7 +1,9 @@
 <template>
     <div class="row justify-content-md-center">
         <div class="col-md-6">
-            <h1 class="display-4 text-center">The Search for X</h1>
+            <h1 class="display-4 text-center">
+                The Search for X
+            </h1>
             <p class="lead text-center">
                 An interactive fiction story for NaNoWriMo 2019 and Github Game Off 2019
             </p>
@@ -42,9 +44,10 @@
     import Login  from '../components/Login';
     import Register from '../components/Register';
     import ResetPassword from "../components/ResetPassword";
+    import Indicator from "../components/Indicator";
 
     export default {
-        components: { Login, Register, ResetPassword },
+        components: { Indicator, Login, Register, ResetPassword },
         data() {
             return {
                 tab: 'login',

@@ -18,7 +18,7 @@ class AuthController extends Controller
 
             $user =  auth()->user();
 
-            return response()->json($user);
+            return response()->json($user->load('saves'));
         }
 
         throw new \Exception('Invalid Credentials');
@@ -31,6 +31,6 @@ class AuthController extends Controller
 
         $user = User::create($data);
 
-        return response()->json($user);
+        return response()->json($user->load('saves'));
     }
 }

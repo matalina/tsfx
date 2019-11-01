@@ -9,12 +9,21 @@
         >
             {{ message }}
         </b-alert>
+        <Indicator
+            style="position: absolute; top: 20px; right: 20px; z-index: 1000;"
+        ></Indicator>
         <router-view></router-view>
     </div>
 </template>
 
 <script>
+    import api from '../api';
+    import Indicator from "../components/Indicator";
+
+    const CHECK_ONLINE = 30 * 60 * 60;
+
     export default {
+        components: {Indicator},
         data() {
             return {
                 show: false,
@@ -35,7 +44,17 @@
                     this.show = false;
                     this.message = null;
                 }, 10000);
-            })
+            });
+
+            setInterval(() => {
+                api.send('get','/am-i-online')
+                    .then(() => {
+                        EventBus.fire('online');
+                    })
+                    .catch(() => {
+                        EventBus.fire('offline');
+                    })
+            }, CHECK_ONLINE);
         }
     }
 </script>

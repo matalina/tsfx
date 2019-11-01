@@ -1,7 +1,6 @@
 import Home from '../views/Home';
 import Dashboard from '../views/Dashboard';
 import Game from '../views/Game';
-import store from '../store';
 
 export default [
     {

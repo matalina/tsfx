@@ -15,7 +15,7 @@ export default {
             baseURL: '/api/',
             headers: {
                 'X-Requested-With': 'XMLHttpRequest',
-                'Authorization': 'Bearer ' + hasToken()?store.state.user.api_token:'',
+                'Authorization': `Bearer ${hasToken()?store.state.user.api_token:''}`,
                 'Accept': 'application/json',
             },
             data,

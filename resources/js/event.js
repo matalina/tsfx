@@ -2,6 +2,10 @@ import Vue from "vue";
 
 /*
     # EventBus listing
+    - set-alert
+    - online
+    - offline
+
     - begin-game
     - command-sent
  */
