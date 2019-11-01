@@ -1,6 +1,6 @@
 # The Search for X
 
-## To Do List
+## General Web/Admin
 
 - [X] Detect Online/Offline: [Working Off the Grid](https://www.html5rocks.com/en/mobile/workingoffthegrid/) [Online.js](https://github.com/HubSpot/offline) (2019-11-01)
 - [ ] Set up mailgun for email sending
@@ -9,6 +9,18 @@
 - [X] Edit profile (20119-11-01)
 - [ ] Update Craftable UI for Relationships: [Relationship Example](https://www.getcraftable.com/docs/5.0/relations)
 - [ ] Figure out what to do on an API fail because of network connection (see articles for detect online/offline)
+
+## Game Play
+
+- [ ] Create New Game
+- [ ] Save Game
+- [ ] Load New Game
+- [ ] Command Line
+- [ ] Story Area
+- [ ] Map?
+- [ ] History/State
+- [ ] Commands
+- [ ] Chapters/Scenes
 
 ## Bug Fixes
 
