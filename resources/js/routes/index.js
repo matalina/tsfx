@@ -12,7 +12,7 @@ export default [
         component: Dashboard,
     },
     {
-        path: '/game',
+        path: '/game/:key',
         component: Game,
     }
 ];

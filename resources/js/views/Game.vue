@@ -1,22 +1,26 @@
 <template>
-    <div id="app" class="h-full">
-        <template v-if="! loading">
-            <CommandLine></CommandLine>
-            <Story></Story>
-        </template>
-        <div
-            v-if="loading"
-            class="text-center m-64"
-        >
-            <i class="fas fa-cog fa-spin fa-5x fa-fw"></i><br/>
-            Loading...
-        </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <template v-if="! loading">
+                    <CommandLine></CommandLine>
+                    <Story></Story>
+                </template>
+                <div
+                        v-if="loading"
+                        class="text-center m-64"
+                >
+                    <i class="fas fa-cog fa-spin fa-5x fa-fw"></i><br/>
+                    Loading...
+                </div>
 
-        <div
-            v-if="error"
-            class="text-center m-64"
-        >
-            There was a problem we cannot resolve.
+                <div
+                        v-if="error"
+                        class="text-center m-64"
+                >
+                    There was a problem we cannot resolve.
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -37,7 +41,7 @@
         },
         mounted() {
             if(this.$store.state.new_game) {
-                this.load();
+                //this.load();
             }
 
         }

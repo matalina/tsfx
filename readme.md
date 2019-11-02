@@ -8,7 +8,7 @@
 - [X] Logout (2019-11-01)
 - [X] Edit profile (20119-11-01)
 - [ ] Update Craftable UI for Relationships: [Relationship Example](https://www.getcraftable.com/docs/5.0/relations)
-- [ ] Figure out what to do on an API fail because of network connection (see articles for detect online/offline)
+- [ ] _**[not a priority]**_ Figure out what to do on an API fail because of network connection (see articles for detect online/offline) 
 
 ## Game Play
 

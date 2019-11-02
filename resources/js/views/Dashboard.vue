@@ -27,11 +27,11 @@
                     There are no saved games.
                 </div>
                 <div
-                    class="list-group list-group-flush"
+                    class="list-group list-group-flush border border-gray"
                     v-for="save in games"
                 >
                     <button
-                        class="list-group-item list-group-item-action"
+                        class="list-group-item list-group-item-action border-0"
                         @click="getSavedGame(save.key)"
                     >{{ save.name }}</button>
                 </div>
@@ -40,11 +40,16 @@
                 <EditProfile
                     v-if="is('profile')"
                 ></EditProfile>
+                <NewGame
+                    v-if="is('new-game')"
+                ></NewGame>
+
             </div>
             <div class="col-md-4 text-center">
                 <div class="w-100 border border-gray rounded p-5 mb-3">
                     <button
                         class="btn btn-outline-dark"
+                        @click="newGame()"
                     >New Game</button>
                 </div>
                 <div class="w-100 border border-gray rounded p-5 mb-3">
@@ -65,8 +70,9 @@
 <script>
     import Indicator from "../components/Indicator";
     import EditProfile from "../components/EditProfile";
+    import NewGame from "../components/NewGame";
     export default {
-        components: {EditProfile, Indicator},
+        components: { NewGame, EditProfile, Indicator },
         data() {
             return {
                 user: this.$store.state.user,
@@ -95,6 +101,9 @@
             },
             editProfile() {
                 this.tab = 'profile';
+            },
+            newGame() {
+                this.tab = 'new-game';
             }
         },
         mounted() {

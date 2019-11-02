@@ -5,6 +5,13 @@ export default {
     logout({ commit }) {
         commit('clear');
     },
+
+    newSave({ commit }, data ) {
+        commit('newSave', data);
+    },
+
+
+
     history({ commit }, data) {
         commit('history',data);
     },

@@ -4,6 +4,11 @@ export default {
     login(state, data) {
         state.user = data;
     },
+
+    newSave(state, data) {
+        state.user.saves.push(data);
+    },
+
     history(state, data) {
         state.history.push(data);
     },

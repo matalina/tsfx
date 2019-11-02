@@ -3,62 +3,51 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Save\StoreRequest;
+use App\Http\Requests\Save\UpdateRequest;
+use App\Models\Save;
 use Illuminate\Http\Request;
 
 class SaveController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        return response()->json([
+            'message' => 'Cannot preform this action.'
+        ],400);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+        $save = Save::create([
+            'user_id' => $request->get('user_id'),
+            'name' => $request->get('name'),
+            'state' => $request->get('state'),
+            'key' => true,
+        ]);
+
+        return response()->json($save);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show(Save $save)
     {
-        //
+        return response()->json($save);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, Save $save)
     {
-        //
+        $save->state = $request->get('state');
+        $save->save();
+
+        return response()->json($save);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy(Save $save)
     {
-        //
+        $save->delete();
+
+        return response()->json([
+            'message' => 'Save deleted.'
+        ]);
     }
 }

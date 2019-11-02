@@ -20,11 +20,14 @@ Route::post('auth/reset-password', 'Api\AuthController@reset')->name('reset');
 Route::get('am-i-online', 'Api\OnlineController')->name('online');
 
 Route::middleware('auth:api')->group(function() {
-    Route::apiResource('rooms', 'Api\RoomController');
-    Route::apiResource('items', 'Api\ItemController');
-    Route::apiResource('people', 'Api\PersonController');
-    Route::apiResource('users', 'Api\ProfileController');
-    Route::apiResource('saves', 'Api\SaveController');
+    Route::apiResource('rooms', 'Api\RoomController')
+        ->only(['show','index']);
+    Route::apiResource('items', 'Api\ItemController')
+        ->only(['show','index']);
+    Route::apiResource('people', 'Api\PersonController')
+        ->only(['show','index']);
+    Route::apiResource('saves', 'Api\SaveController')
+        ->except(['index']);
 
     Route::apiResource('users','Api\UserController');
 });

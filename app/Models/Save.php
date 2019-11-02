@@ -24,7 +24,14 @@ class Save extends Model
     {
         return 'key';
     }
-    
+
+    /* ************************ ACCESSOR ************************* */
+
+    public function setKeyAttribute($value)
+    {
+        $this->attributes['key'] = \Str::random(10);
+    }
+
     /* ********************** RELATIONSHIPS *********************** */
     
 }
