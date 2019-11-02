@@ -2,12 +2,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <h1 class="display-4">
+                <h1 class="display-4 text-center">
                     The Search for X
                 </h1>
-                <p class="lead">
-                    An interactive fiction story for NaNoWriMo 2019 and Github Game Off 2019
+                <p class="text-center lead">"Leaps and Bounds"</p>
+                <p class="text-center">
+                    An interactive fiction story for NaNoWriMo and  Github Game Off 2019
                 </p>
+                <p>It is the 32nd century and technology is leaps and bounds ahead of your wildest imagination.  Immerse yourself in a world of mutants, technology and mystery as you, Phoenix "Nix", search for the super secret component codenamed "X".  The bounty is high, the search is far reaching.  Explore the vast new world, making friends and enemies along the way.</p>
             </div>
             <div class="col-md-4 text-center">
                 <div

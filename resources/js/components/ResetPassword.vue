@@ -1,5 +1,7 @@
 <template>
-    <form>
+    <form
+        @submit="sendForm()"
+    >
         <div class="form-group">
             <label>Email Address</label>
             <input
@@ -17,13 +19,37 @@
 </template>
 
 <script>
+    import errors from '../errors';
+    import api from '../api';
+
     export default {
         name: 'ResetPassword',
         data() {
             return {
                 email: null,
-                password: null,
+                email_error: null,
             };
+        },
+        methods: {
+            ...errors,
+            sendForm() {
+                let data = {
+                    email: this.email,
+                    password: this.password,
+                };
+                api.send('post','/auth/reset-password',data)
+                    .then((response) => {
+                        EventBus.fire('set-alert', {
+                            type: 'success',
+                            message: response.data.message,
+                        });
+
+                        this.email = '';
+                    })
+                    .catch((error) => {
+                        this.error_handler(error);
+                    });
+            }
         }
     }
 </script>

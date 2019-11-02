@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 
 Route::post('auth/login', 'Api\AuthController@login')->name('login');
 Route::post('auth/register', 'Api\AuthController@register')->name('register');
+Route::post('auth/reset-password', 'Api\AuthController@reset')->name('reset');
 
 Route::get('am-i-online', 'Api\OnlineController')->name('online');
 
