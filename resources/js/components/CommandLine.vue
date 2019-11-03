@@ -19,6 +19,9 @@
                 style="outline: none"
                 autofocus
             />
+            <div class="input-group-append">
+                <div class="input-group-text">{{ time }}</div>
+            </div>
         </div>
     </div>
 </template>
@@ -32,6 +35,8 @@
     import Item from "../objects/item";
     import Mouse from '../objects/mouse';
 
+    const GAME_SECOND = 10; //seconds
+
     export default {
         name: 'CommandLine',
         data() {
@@ -39,7 +44,30 @@
                 command: null,
                 count: 0,
                 mouse: new Mouse(),
+                clock: this.$store.state.game_time,
             };
+        },
+        computed: {
+            time() {
+                let diff = moment.duration(this.clock,'seconds');
+
+                let days = Math.floor(diff.asDays());
+                diff = moment.duration(diff.asDays() - days, 'days');
+                days = days.toString().padStart(2,'0');
+
+                let hours = Math.floor(diff.asHours());
+                hours = hours .toString().padStart(2,'0');
+                diff = moment.duration(diff.asHours() - hours, 'hours');
+
+                let minutes = Math.floor(diff.asMinutes());
+                minutes = minutes.toString().padStart(2,'0');
+                diff = moment.duration(diff.asMinutes() - minutes, 'minutes');
+
+                let seconds = Math.floor(diff.asSeconds());
+                seconds = seconds.toString().padStart(2,'0');
+
+                return `${days}:${hours}:${minutes}:${seconds}`;
+            }
         },
         methods: {
             ...game,
@@ -95,6 +123,12 @@
 
                 this.command = null;
             },
+        },
+        mounted() {
+            setInterval(() => {
+                this.clock++;
+                this.$store.dispatch('gameTick');
+            }, GAME_SECOND * 1000)
         },
     }
 </script>

@@ -7,20 +7,22 @@
 - [X] Reset Password (2019-11-02)
 - [X] Logout (2019-11-01)
 - [X] Edit profile (20119-11-01)
-- [ ] Update Craftable UI for Relationships: [Relationship Example](https://www.getcraftable.com/docs/5.0/relations)
+- [ ] <s>_**[changing game data]**_ Update Craftable UI for Relationships: [Relationship Example](https://www.getcraftable.com/docs/5.0/relations)</s>
 - [ ] _**[not a priority]**_ Figure out what to do on an API fail because of network connection (see articles for detect online/offline) 
 
 ## Game Play
 
-- [ ] Create New Game
+- [ ] Load Game Data from markdown to database
+- [X] Create New Game (2016-11-02)
 - [ ] Save Game
-- [ ] Load New Game
+- [ ] Load Game
 - [ ] Command Line
 - [ ] Story Area
 - [ ] Map?
 - [ ] History/State
 - [ ] Commands
 - [ ] Chapters/Scenes
+- [X] Implement Game time (2019-11-03)
 
 ## Bug Fixes
 

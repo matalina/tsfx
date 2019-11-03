@@ -6,6 +6,9 @@ export default {
         commit('clear');
     },
 
+    gameTick({ commit }) {
+        commit('gameTick');
+    },
     newSave({ commit }, data ) {
         commit('newSave', data);
     },

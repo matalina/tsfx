@@ -5,6 +5,9 @@ export default {
         state.user = data;
     },
 
+    gameTick(state) {
+        state.game_time ++;
+    },
     newSave(state, data) {
         state.user.saves.push(data);
     },
