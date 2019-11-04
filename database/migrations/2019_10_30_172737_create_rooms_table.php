@@ -13,19 +13,18 @@ class CreateRoomsTable extends Migration
      */
     public function up()
     {
-        
+
         if (!Schema::hasTable('rooms')) {
             Schema::create('rooms', function (Blueprint $table) {
                 $table->bigIncrements('id');
 
                 $table->string('title');
-                $table->string('name'); // lower case no spaces
                 $table->text('description');
 
                 $table->timestamps();
             });
         }
-        
+
         if (!Schema::hasTable('items')) {
             Schema::create('items', function (Blueprint $table) {
                 $table->bigIncrements('id');
@@ -41,7 +40,7 @@ class CreateRoomsTable extends Migration
                 $table->timestamps();
             });
         }
-        
+
         if (!Schema::hasTable('people')) {
             Schema::create('people', function (Blueprint $table) {
                 $table->bigIncrements('id');
@@ -61,7 +60,7 @@ class CreateRoomsTable extends Migration
                 $table->timestamps();
             });
         }
-        
+
          if (!Schema::hasTable('doors')) {
             Schema::create('doors', function (Blueprint $table) {
                 $table->bigIncrements('id');
@@ -84,8 +83,8 @@ class CreateRoomsTable extends Migration
                 $table->timestamps();
             });
         }
-        
-    
+
+
     }
 
     /**

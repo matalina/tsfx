@@ -1,0 +1,64 @@
+<style>
+    #map {
+        border: 1px solid #ccc;
+        height: 300px;
+        width: 300px;
+    }
+</style>
+
+<canvas id="map"></canvas>
+
+<script>
+    const canvas = document.querySelector('canvas');
+    const c = canvas.getContext('2d');
+
+    function clear() {
+        c.clearRect(0, 0, canvas.width, canvas.height)
+    }
+
+    function draw(x, y, exit, current = false) {
+        const width = canvas.width / 3;
+        const height = canvas.height / 3;
+        const font_height = canvas.height / 15;
+        const a = width + width * (y - 1);
+        const b = height + height * (x - 1);
+        const center_x = a + (width / 2);
+        const center_y = b + (height / 2) + (font_height / 4);
+
+
+        c.font = font_height + 'px monospace';
+        c.textAlign = 'center';
+        c.strokeStyle = 'black';
+        c.lineWidth = 2;
+
+        if(current) {
+            c.fillStyle = '#ccc';
+            c.fillRect(a, b, width, height);
+        }
+        c.strokeRect(a, b, width, height);
+        if(! current) {
+            c.fillStyle = 'black';
+            c.fillText(exit, center_x,  center_y)
+        }
+    }
+
+    draw(1, 0,'west');
+    draw(1, 1, null, true);
+    draw(1, 2,'east');
+
+    setTimeout(() => {
+        clear();
+        draw(0, 0,'cafe');
+        draw(0, 1, 'teleporter');
+        draw(0, 2, 'train');
+        draw(1, 0, 'home');
+        draw(1, 1, null, true);
+        draw(1, 2, 'east');
+        draw(2, 0, 'reaver');
+        draw(2, 1, 'alex');
+        draw(2, 2, 'market');
+    }, 3000)
+
+
+
+</script>
