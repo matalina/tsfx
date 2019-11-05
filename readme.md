@@ -13,6 +13,7 @@
 ## Game Play
 
 - [X] Load Game Data from markdown to database (2019-11-05)
+- [ ] Create Doors, Chapters, Scene game data
 - [X] Create New Game (2019-11-02)
 - [ ] Save Game
 - [ ] Load Game

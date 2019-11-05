@@ -19,6 +19,7 @@ class CreateScenesTable extends Migration
             $table->string('key',10)->unique();
             $table->string('title');
             $table->text('body');
+            $table->string('trigger_id');
 
             $table->timestamps();
         });
@@ -28,6 +29,18 @@ class CreateScenesTable extends Migration
 
             $table->bigInteger('prop_id')->unsigned();
             $table->string('prop_type');
+        });
+
+        Schema::create('triggers', function (Blueprint $table) {
+            $table->bigIncrements('id');
+
+            $table->string('human');
+            $table->string('type'); // success, fail, clock, timer
+            $table->string('command');
+            $table->string('args');
+            $table->text('results');
+
+            $table->timestamps();
         });
     }
 
