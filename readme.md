@@ -12,8 +12,8 @@
 
 ## Game Play
 
-- [ ] Load Game Data from markdown to database
-- [X] Create New Game (2016-11-02)
+- [X] Load Game Data from markdown to database (2019-11-05)
+- [X] Create New Game (2019-11-02)
 - [ ] Save Game
 - [ ] Load Game
 - [ ] Command Line
