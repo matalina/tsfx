@@ -26,15 +26,10 @@ class Door extends Model
         'updated_at',
     
     ];
-    
-    protected $appends = ['resource_url'];
+
 
     /* ************************ ACCESSOR ************************* */
 
-    public function getResourceUrlAttribute()
-    {
-        return url('/admin/doors/'.$this->getKey());
-    }
     
     /* ********************** RELATIONSHIPS *********************** */
     

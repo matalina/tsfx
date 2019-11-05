@@ -22,14 +22,9 @@ class Item extends Model
 
     ];
 
-    protected $appends = ['resource_url'];
 
     /* ************************ ACCESSOR ************************* */
 
-    public function getResourceUrlAttribute()
-    {
-        return url('/admin/items/'.$this->getKey());
-    }
 
     /* ********************** RELATIONSHIPS *********************** */
 

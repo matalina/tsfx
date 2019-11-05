@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Game;
 
 use App\Http\Controllers\Controller;
+use App\Models\Chapter;
 use Illuminate\Http\Request;
 use App\Models\Save;
 
@@ -12,21 +13,21 @@ class ChapterController extends Controller
     {
         $this->middleware('auth');
     }
-    
-    public function show(Save $save)
+
+
+    public function show($chapter_key, $scene_key = null)
     {
-        $chapter = $save->state->chapter->id;
-        $data = $save->state;
-        
-        switch($chapter)
-        {
-            case 0:
-                $view = view('game.chapter0000');
-                break;
-            default:
-                abort(404);
+        $queue = Chapter::find($chapter_key)
+            ->with(['scenes','scenes.rooms', 'scenes.items','scene.people']);
+
+        if($scene_key != null) {
+            $queue->whereHas('scenes', function($query) use ($scene_key) {
+                $query->where('key', '=', $scene_key);
+            });
         }
-        
-        return $view->with('data', $data);
+
+        $chapter = $queue->first();
+
+        return response()->json($chapter->load('scenes'));
     }
 }
