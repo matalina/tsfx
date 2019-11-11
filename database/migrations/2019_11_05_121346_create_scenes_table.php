@@ -17,9 +17,10 @@ class CreateScenesTable extends Migration
             $table->bigIncrements('id');
 
             $table->string('key',10)->unique();
+            $table->integer('order');
             $table->string('title');
             $table->text('body');
-            $table->string('trigger_id');
+            $table->string('scene_change'); // trigger
 
             $table->timestamps();
         });
@@ -38,7 +39,8 @@ class CreateScenesTable extends Migration
             $table->string('type'); // success, fail, clock, timer
             $table->string('command');
             $table->string('args');
-            $table->text('results');
+            $table->json('trigger');
+            $table->text('body');
 
             $table->timestamps();
         });
