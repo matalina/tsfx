@@ -17,7 +17,7 @@
         "gray-matter": "^4.0.2",
         "jquery": "^3.2",
         "laravel-mix": "^4.0.7",
-        "lodash": "^4.17.13",
+        "lodash": "^4.17.19",
         "markdown-it": "^10.0.0",
         "markdown-it-fontawesome": "^0.3.0",
         "popper.js": "^1.12",
